@@ -13,7 +13,7 @@ require 'fileutils'
 module LabratBrain
   @ping_from = "prod-webserver" # servers from which to perform the pings
   @alert_dir = "/data/brain-monitoring/alerts"
-  
+
   @args_def =
     {
      :metric     => "The name of the metric as seen in :list task",
@@ -229,23 +229,6 @@ end
     puts get_metrics(ENV['metric'], ENV['count'], ENV['limit'], ENV['pattern'])
   end
 
-  @production_mysql = {
-                       :prod_br_db_master => '10.30.143.91',
-                       :prod_br_db_slave1 => '10.140.1.147',
-                       :prod_br_db_slave2 => '10.218.93.167',
-                       :prod_br_db_slave3 => '10.218.95.219',
-                       :prod_br_db_slave4 => '10.31.138.97',
-                       :prod_br_db_slave5 => '10.44.117.70',
-                       :prod_br_db_slave6 => '10.31.129.17',
-                       :prod_br_db_slave7 => '10.149.46.47',
-                       :prod_br_db_slave8 => '10.171.0.118',
-                       :prod_br_db_slave9 => '10.150.8.137',
-                       :prod_br_db_slave10 => '10.78.174.109',
-                       :prod_br_db_slave11 => '10.126.142.14',
-                       :prod_br_db_slave_bg => '10.171.0.118',
-                       #:prod_bogus_db_server => '10.171.0.222'
-                      }
-
   desc "Check Database connectivity from "
   task :mon_db_ping do
     results = {}
@@ -409,5 +392,3 @@ end
     end
   end
 end
-
-
