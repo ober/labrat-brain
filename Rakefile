@@ -6,28 +6,19 @@ task :default => :spec
 RSpec::Core::RakeTask.new
 
 namespace :spec do
-  desc "Run acceptance specs"
+  desc "Run acceptance specs, calling AWS and servers"
   task :acceptance => %w[clean:vcr] do
-    ENV['LIVE'] = "1"
+    ENV['LIVE'] = '1'
     Rake::Task["spec"].invoke
   end
 end
 
-task :clean => %w[clean:chef_repo clean:vcr]
+task :clean => %w[clean:vcr clean:reports]
 namespace :clean do
-  task :env do
-    ENV['TEST'] = '1'
-    require "./lib/labrat_brain"
-    @settings = Cfn::Settings.new.data
-  end
-
-  task :chef_repo => :env do
-    chef_repo_path = File.dirname(@settings.rna_path)
-    FileUtils.rm_rf(chef_repo_path)
-  end
-
-  desc "clean vcr_cassettes fixtures"
   task :vcr do
     FileUtils.rm_rf('spec/fixtures/vcr_cassettes')
+  end
+  task :reports do
+    FileUtils.rm_rf(Dir.glob('tmp/report*.txt'))
   end
 end

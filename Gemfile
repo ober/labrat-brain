@@ -1,9 +1,11 @@
-ruby '1.9.3'
+source 'https://rubygems.org'
 
-source "https://rubygems.org"
-source "http://gems.bleacherreport.com"
+# Specify your gem's dependencies in brain.gemspec
+gemspec
 
-gem "librato-metrics"
-#gem "yaml"
-gem "json"
-gem "rake"
+gem "codeclimate-test-reporter", group: :test, require: nil
+
+#gem "librato-metrics"
+##gem "yaml"
+#gem "json"
+#gem "rake"

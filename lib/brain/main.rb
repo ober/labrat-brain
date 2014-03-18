@@ -10,7 +10,8 @@ require 'pp'
 require 'tmpdir'
 require 'fileutils'
 
-module LabratBrain
+module Brain
+  class
   @ping_from = "prod-webserver" # servers from which to perform the pings
   @alert_dir = "/data/brain-monitoring/alerts"
 

@@ -1,12 +1,8 @@
-
-
 module Monitor
-  
   class JsonHandling
-
     @ping_from = "prod-webserver" # servers from which to perform the pings
     @alert_dir = "/data/brain-monitoring/alerts"
-    
+
     @args_def =
       {
        :metric     => "The name of the metric as seen in :list task",
@@ -28,7 +24,6 @@ module Monitor
         end
       end
     end
-
 
     def with_history_monitor(metric, last, limit, pagerate, &block)
       Librato::Metrics.fetch(metric.to_sym, :start_time => (Time.now - (ENV['last'].to_i * 60)) ).each_pair do |k,v|
@@ -118,9 +113,9 @@ Message-Id: <labrat.message.id.#{Time.now.to_i}@linbsd.org>
 EOF
       msg << message
 
-Net::SMTP.start('localhost') do |smtp|
-  smtp.send_message msg, from, to
-end
+      Net::SMTP.start('localhost') do |smtp|
+        smtp.send_message msg, from, to
+      end
     end
 
     task :default do

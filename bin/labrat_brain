@@ -3,7 +3,7 @@
 require 'rubygems'
 
 $:.unshift(File.expand_path('../../lib', __FILE__))
-require 'labrat_brain'
-require 'labrat_brain/cli'
+require 'brain'
+require 'brain/cli'
 
-LabratBrain::CLI.start(ARGV)
+Brain::CLI.start(ARGV)
