@@ -1,5 +1,5 @@
 module Monitor
-  class JsonHandling
+  class Mega
     @ping_from = "prod-webserver" # servers from which to perform the pings
     @alert_dir = "/data/brain-monitoring/alerts"
 
